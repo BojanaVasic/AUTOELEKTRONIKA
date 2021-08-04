@@ -29,23 +29,23 @@
 #ifndef FREERTOS_CONFIG_H
 #define FREERTOS_CONFIG_H
 
-/*-----------------------------------------------------------
- * Application specific definitions.
- *
- * These definitions should be adjusted for your particular hardware and
- * application requirements.
- *
- * THESE PARAMETERS ARE DESCRIBED WITHIN THE 'CONFIGURATION' SECTION OF THE
- * FreeRTOS API DOCUMENTATION AVAILABLE ON THE FreeRTOS.org WEB SITE.  See
- * http://www.freertos.org/a00110.html
- *----------------------------------------------------------*/
+ /*-----------------------------------------------------------
+  * Application specific definitions.
+  *
+  * These definitions should be adjusted for your particular hardware and
+  * application requirements.
+  *
+  * THESE PARAMETERS ARE DESCRIBED WITHIN THE 'CONFIGURATION' SECTION OF THE
+  * FreeRTOS API DOCUMENTATION AVAILABLE ON THE FreeRTOS.org WEB SITE.  See
+  * http://www.freertos.org/a00110.html
+  *----------------------------------------------------------*/
 
 #define configUSE_PREEMPTION					1
 #define configUSE_PORT_OPTIMISED_TASK_SELECTION	1
 #define configUSE_IDLE_HOOK						0
 #define configUSE_TICK_HOOK						0
 #define configUSE_DAEMON_TASK_STARTUP_HOOK		0
-//#define configTICK_RATE_HZ						( 1000 ) /* In this non-real time simulated environment the tick frequency has to be at least a multiple of the Win32 tick frequency, and therefore very slow. */
+  //#define configTICK_RATE_HZ						( 1000 ) /* In this non-real time simulated environment the tick frequency has to be at least a multiple of the Win32 tick frequency, and therefore very slow. */
 #define configTICK_RATE_HZ						( 100 )
 #define configMINIMAL_STACK_SIZE				( ( unsigned short ) 70 ) /* In this simulated case, the stack only has to hold one small structure as the real stack is part of the win32 thread. */
 #define configTOTAL_HEAP_SIZE					( ( size_t ) ( 52 * 1024 ) )
@@ -105,13 +105,13 @@ functions anyway. */
 
 /* It is a good idea to define configASSERT() while developing.  configASSERT()
 uses the same semantics as the standard C assert() macro. */
-extern void vAssertCalled( unsigned long ulLine, const char * const pcFileName );
+extern void vAssertCalled(unsigned long ulLine, const char* const pcFileName);
 #define configASSERT( x ) if( ( x ) == 0 ) vAssertCalled( __LINE__, __FILE__ )
 
 #define configINCLUDE_MESSAGE_BUFFER_AMP_DEMO	0
 #if ( configINCLUDE_MESSAGE_BUFFER_AMP_DEMO == 1 )
-	extern void vGenerateCoreBInterrupt( void * xUpdatedMessageBuffer );
-	#define sbSEND_COMPLETED( pxStreamBuffer ) vGenerateCoreBInterrupt( pxStreamBuffer )
+extern void vGenerateCoreBInterrupt(void* xUpdatedMessageBuffer);
+#define sbSEND_COMPLETED( pxStreamBuffer ) vGenerateCoreBInterrupt( pxStreamBuffer )
 #endif /* configINCLUDE_MESSAGE_BUFFER_AMP_DEMO */
 
 #endif /* FREERTOS_CONFIG_H */
