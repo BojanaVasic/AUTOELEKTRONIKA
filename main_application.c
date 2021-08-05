@@ -717,7 +717,7 @@ void main_demo(void)
 	vPortSetInterruptHandler(portINTERRUPT_SRL_OIC, OnLED_ChangeInterrupt);
 
 	ispis_prazan_display();
-	if (set_LED_BAR(1, 0x00) != 0) {
+	if (set_LED_BAR(0, 0x00) != 0) {
 		printf("Greska \n");
 	}
 
